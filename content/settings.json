@@ -1,0 +1,24 @@
+{
+  "business_name": "Royal Breeze",
+  "headline": "Grounds your residents are proud to come home to.",
+  "intro": "Full-service landscape maintenance for HOAs and residential communities. Common areas, entrances, ponds, and irrigation, handled by one dependable crew on a set schedule.",
+  "service_area": "Serving communities in Your City and surrounding areas",
+  "phone": "(555) 123-4567",
+  "email": "hello@example.com",
+  "hours": "Mon–Fri 7am–6pm, Sat 8am–2pm",
+  "about": "Boards and property managers get one point of contact who knows your community, answers the phone, and shows up to board meetings when you need us there.",
+  "highlights": [
+    {
+      "title": "One account manager",
+      "text": "A single contact who walks your property regularly and handles every request."
+    },
+    {
+      "title": "Reports after every visit",
+      "text": "Photos and notes on what was done, so the board always knows where things stand."
+    },
+    {
+      "title": "Licensed and insured",
+      "text": "Certificates of insurance ready for your management company on request."
+    }
+  ]
+}

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Royal Breeze</title>
+<meta name="description" content="Landscape maintenance for HOAs and residential communities. Request a proposal or schedule a property walkthrough online.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M15 85c0-38 25-66 70-70-3 44-31 70-70 70z' fill='%232347b5'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pine:#13245a;      /* navy: main text + dark surfaces */
+  --moss:#2347b5;      /* royal blue: primary actions */
+  --blade:#3d66d9;     /* hero stripe light */
+  --blade-dk:#2f56c6;  /* hero stripe dark */
+  --sun:#a8d8ff;       /* light blue highlight */
+  --stone:#d7e2f1;     /* lines, borders */
+  --paper:#f4f8fd;     /* page background */
+  --white:#ffffff;
+  --muted:#4d5b7a;
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body:"Instrument Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --wrap:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--pine);font:17px/1.6 var(--body)}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);line-height:1.05;margin:0;letter-spacing:-.02em}
+h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:800}
+.lead{color:var(--muted);max-width:60ch;margin:.75rem 0 0}
+
+/* Header */
+header.top{position:sticky;top:0;z-index:20;background:rgba(244,248,253,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--stone)}
+.top .wrap{display:flex;align-items:center;gap:24px;height:68px}
+.brand{font-family:var(--display);font-weight:800;font-size:1.25rem;line-height:1.15;text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand svg{flex:none}
+nav.links{margin-left:auto;display:flex;gap:22px;align-items:center}
+nav.links a{text-decoration:none;font-weight:500;font-size:.95rem}
+nav.links a:hover{text-decoration:underline;text-underline-offset:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:999px;font:600 1rem var(--body);text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn-primary{background:var(--moss);color:var(--white)}
+.btn-primary:hover{background:var(--pine)}
+.btn-sun{background:var(--sun);color:var(--pine)}
+.btn-sun:hover{background:var(--white)}
+.btn-ghost{border-color:rgba(255,255,255,.7);color:var(--white)}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.btn-small{padding:8px 16px;font-size:.92rem}
+@media (max-width:760px){nav.links a:not(.btn){display:none}}
+
+/* Hero: freshly mowed lawn stripes */
+.hero{position:relative;color:var(--white);overflow:hidden;
+  background:repeating-linear-gradient(105deg,var(--blade-dk) 0 90px,var(--blade) 90px 180px)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,36,90,0) 30%,rgba(19,36,90,.55));pointer-events:none}
+.hero .wrap{position:relative;z-index:1;padding-top:clamp(64px,11vw,140px);padding-bottom:clamp(56px,9vw,110px)}
+.hero h1{font-size:clamp(2.8rem,8.5vw,6.4rem);font-weight:800;max-width:14ch;text-shadow:0 2px 24px rgba(19,36,90,.35)}
+.hero p.intro{font-size:clamp(1.05rem,2vw,1.25rem);max-width:46ch;margin:1.25rem 0 2rem;color:#eef5ff}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero .area{margin-top:2rem;font-size:.95rem;color:#e3eeff;display:flex;align-items:center;gap:8px}
+.mower{position:absolute;inset:0;background:repeating-linear-gradient(105deg,var(--blade-dk) 0 90px,var(--blade) 90px 180px);transform-origin:left;animation:mow 1.1s cubic-bezier(.6,.1,.2,1) .15s both;z-index:0;filter:saturate(.6) brightness(.85)}
+@keyframes mow{from{clip-path:inset(0 0 0 0)}to{clip-path:inset(0 0 0 100%)}}
+
+/* Services as a price list */
+section{padding:clamp(64px,9vw,112px) 0}
+.price-list{list-style:none;margin:40px 0 0;padding:0;border-top:2px solid var(--pine)}
+.price-list li{display:grid;grid-template-columns:1fr auto;gap:6px 32px;padding:22px 0;border-bottom:1px solid var(--stone)}
+.price-list h3{font-size:1.35rem;font-weight:700}
+.price-list p{margin:0;color:var(--muted);grid-column:1;max-width:58ch}
+.price-list .price{grid-row:1 / span 2;grid-column:2;align-self:center;font-family:var(--display);font-weight:700;font-size:1.1rem;text-align:right;white-space:nowrap}
+@media (max-width:620px){.price-list li{grid-template-columns:1fr}.price-list .price{grid-row:auto;grid-column:1;text-align:left}}
+.highlights{list-style:none;padding:0;margin:56px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px 40px}
+.highlights li{border-left:4px solid var(--moss);padding-left:16px}
+.highlights h3{font-size:1.15rem;font-weight:700;margin-bottom:4px}
+.highlights p{margin:0;color:var(--muted)}
+.highlights:empty{display:none}
+.services-foot{margin-top:24px;color:var(--muted);font-size:.95rem}
+
+/* Gallery */
+#work{background:var(--pine);color:var(--white)}
+#work .lead{color:#c3d3f2}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:14px;margin-top:40px}
+.gallery button{all:unset;cursor:zoom-in;position:relative;display:block;border-radius:10px;overflow:hidden;aspect-ratio:4/3;background:#1e3577}
+.gallery button:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.gallery img{width:100%;height:100%;object-fit:cover}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;font-size:.92rem;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.empty{margin-top:32px;padding:32px;border:1px dashed rgba(255,255,255,.35);border-radius:10px;color:#c3d3f2}
+dialog.lightbox{border:0;padding:0;background:transparent;max-width:min(92vw,1100px)}
+dialog.lightbox::backdrop{background:rgba(8,14,36,.88)}
+dialog.lightbox img{max-height:82vh;border-radius:8px;margin:0 auto}
+dialog.lightbox p{color:#fff;text-align:center;margin:12px 0 0}
+dialog.lightbox .close{position:fixed;top:16px;right:16px}
+
+/* Request forms */
+.request-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:56px;align-items:start}
+@media (max-width:880px){.request-grid{grid-template-columns:1fr;gap:32px}}
+.contact-list{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:16px}
+.contact-list strong{display:block;font-size:.85rem;color:var(--muted);font-weight:600}
+.contact-list a{font-weight:600;text-decoration:none}
+.contact-list a:hover{text-decoration:underline}
+.panel{background:var(--white);border:1px solid var(--stone);border-radius:16px;padding:clamp(20px,4vw,36px)}
+.tabs{display:flex;gap:6px;background:var(--paper);border-radius:999px;padding:5px;margin-bottom:28px;width:fit-content;max-width:100%}
+.tabs button{border:0;background:transparent;font:600 .98rem var(--body);color:var(--muted);padding:10px 18px;border-radius:999px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--pine);color:var(--white)}
+form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:560px){form .row{grid-template-columns:1fr}}
+label{display:block;font-weight:600;font-size:.92rem;margin-bottom:16px}
+label span.opt{font-weight:400;color:var(--muted)}
+input,select,textarea{display:block;width:100%;margin-top:6px;padding:12px 14px;font:400 1rem var(--body);color:var(--pine);background:var(--paper);border:1.5px solid var(--stone);border-radius:10px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--moss);background:var(--white);box-shadow:0 0 0 3px rgba(35,71,181,.18)}
+textarea{min-height:110px;resize:vertical}
+.hp{position:absolute;left:-9999px}
+.form-note{font-size:.88rem;color:var(--muted);margin:4px 0 0}
+.success{text-align:left;padding:8px 0}
+.success h3{font-size:1.6rem;margin-bottom:8px}
+.error-msg{color:#9b2c1f;font-weight:600;margin:12px 0 0}
+
+footer{border-top:1px solid var(--stone);padding:32px 0;font-size:.92rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Home">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 27c0-12 8-21 22-22-1 14-10 22-22 22z" fill="#2347b5"/><path d="M6 26C12 19 17 14 24 9" stroke="#a8d8ff" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+      <span data-bind="business_name">Royal Breeze</span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#work">Our work</a>
+      <a href="#request">Contact</a>
+      <a class="btn btn-primary btn-small" href="#request" data-open-tab="quote">Request a proposal</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title" style="padding:0">
+    <div class="mower" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1 id="hero-title" data-bind="headline">Grounds your residents are proud to come home to.</h1>
+      <p class="intro" data-bind="intro">Full-service landscape maintenance for HOAs and residential communities. Common areas, entrances, ponds, and irrigation, handled by one dependable crew on a set schedule.</p>
+      <div class="actions">
+        <a class="btn btn-sun" href="#request" data-open-tab="quote">Request a proposal</a>
+        <a class="btn btn-ghost" href="#request" data-open-tab="booking">Schedule a site walk</a>
+      </div>
+      <p class="area">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+        <span data-bind="service_area">Serving communities in Your City and surrounding areas</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <h2 id="services-title">What we take care of</h2>
+      <p class="lead">Most communities bundle these into one monthly maintenance contract. After a walkthrough of your property, we send the board a written proposal with a fixed monthly price.</p>
+      <ul class="price-list" id="service-list"></ul>
+      <ul class="highlights" id="highlights"></ul>
+      <p class="services-foot">Need something not listed? Mention it in your proposal request and we’ll include it.</p>
+    </div>
+  </section>
+
+  <section id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <h2 id="work-title">Recent work</h2>
+      <p class="lead">A look at communities we maintain. Tap any photo to see it larger.</p>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <section id="request" aria-labelledby="request-title">
+    <div class="wrap request-grid">
+      <div>
+        <h2 id="request-title">Let’s talk about your community</h2>
+        <p class="lead" data-bind="about">Boards and property managers get one point of contact who knows your community, answers the phone, and shows up to board meetings when you need us there.</p>
+        <ul class="contact-list">
+          <li><strong>Call or text</strong><a data-bind-phone href="tel:5551234567">(555) 123-4567</a></li>
+          <li><strong>Email</strong><a data-bind-email href="mailto:hello@example.com">hello@example.com</a></li>
+          <li><strong>Hours</strong><span data-bind="hours">Mon–Fri 7am–6pm, Sat 8am–2pm</span></li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <div class="tabs" role="tablist" aria-label="Choose a request type">
+          <button role="tab" id="tab-quote" aria-controls="pane-quote" aria-selected="true">Request a proposal</button>
+          <button role="tab" id="tab-booking" aria-controls="pane-booking" aria-selected="false">Schedule a site walk</button>
+        </div>
+
+        <!-- QUOTE FORM: Netlify reads this form when the site is deployed -->
+        <div id="pane-quote" role="tabpanel" aria-labelledby="tab-quote">
+          <form name="quote" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="quote">
+            <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+            <label>Community or HOA name <input name="community" required></label>
+            <div class="row">
+              <label>Your name <input name="name" required autocomplete="name"></label>
+              <label>Your role
+                <select name="role" required>
+                  <option value="">Choose one</option><option>Board member</option><option>Property manager</option><option>Management company</option><option>Resident / committee member</option><option>Other</option>
+                </select>
+              </label>
+            </div>
+            <div class="row">
+              <label>Email <input name="email" type="email" required autocomplete="email"></label>
+              <label>Phone <input name="phone" type="tel" required autocomplete="tel"></label>
+            </div>
+            <label>Community address <input name="address" required autocomplete="street-address"></label>
+            <div class="row">
+              <label>Number of homes <span class="opt">(approx.)</span><input name="homes" inputmode="numeric" placeholder="e.g. 250"></label>
+              <label>Current contract ends <span class="opt">(if any)</span><input name="contract_end" type="month"></label>
+            </div>
+            <label>Services needed <span class="opt">(main one)</span>
+              <select name="service" required data-services><option value="">Choose a service</option></select>
+            </label>
+            <label>Anything else we should know? <span class="opt">(optional)</span><textarea name="details" placeholder="Problem areas, what’s not working with your current provider, board meeting dates…"></textarea></label>
+            <button class="btn btn-primary" type="submit">Send proposal request</button>
+            <p class="form-note">We reply within one business day to set up a walkthrough.</p>
+          </form>
+        </div>
+
+        <!-- BOOKING FORM -->
+        <div id="pane-booking" role="tabpanel" aria-labelledby="tab-booking" hidden>
+          <form name="booking" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="booking">
+            <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+            <label>Community or HOA name <input name="community" required></label>
+            <div class="row">
+              <label>Your name <input name="name" required autocomplete="name"></label>
+              <label>Phone <input name="phone" type="tel" required autocomplete="tel"></label>
+            </div>
+            <label>Email <input name="email" type="email" required autocomplete="email"></label>
+            <label>Where should we meet? <input name="address" required placeholder="Clubhouse, front entrance, or address"></label>
+            <div class="row">
+              <label>Preferred date <input name="preferred_date" type="date" required data-min-tomorrow></label>
+              <label>Preferred time
+                <select name="preferred_time" required>
+                  <option value="">Choose a time</option><option>Morning (7–11am)</option><option>Midday (11am–2pm)</option><option>Afternoon (2–6pm)</option>
+                </select>
+              </label>
+            </div>
+            <label>Who will attend? <span class="opt">(optional)</span><input name="attendees" placeholder="e.g. Two board members and our property manager"></label>
+            <label>Notes <span class="opt">(optional)</span><textarea name="notes" placeholder="Gate access, areas you want us to look at first…"></textarea></label>
+            <button class="btn btn-primary" type="submit">Request this site walk</button>
+            <p class="form-note">We’ll walk the property with you and send a written proposal afterward. We confirm the time by phone or email first.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> <span data-bind="business_name">Royal Breeze</span></span>
+    <span data-bind="service_area">Serving communities in Your City and surrounding areas</span>
+  </div>
+</footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+  <button class="btn btn-sun btn-small close" id="lightbox-close">Close</button>
+  <img id="lightbox-img" alt="">
+  <p id="lightbox-cap"></p>
+</dialog>
+
+<script>
+(function(){
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  $("#year").textContent = new Date().getFullYear();
+
+  async function load(path){
+    try { const r = await fetch(path, {cache:"no-cache"}); if(!r.ok) throw 0; return await r.json(); }
+    catch(e){ return null; }
+  }
+
+  /* Business info */
+  load("/content/settings.json").then(s => {
+    if(!s) return;
+    $$("[data-bind]").forEach(el => { const v = s[el.dataset.bind]; if(v) el.textContent = v; });
+    if(s.business_name) document.title = s.business_name;
+    if(s.phone){ $$("[data-bind-phone]").forEach(a => { a.textContent = s.phone; a.href = "tel:" + s.phone.replace(/[^\d+]/g,""); }); }
+    const hl = (s.highlights || []).filter(h => h.title);
+    $("#highlights").innerHTML = hl.map(h => `<li><h3>${esc(h.title)}</h3><p>${esc(h.text)}</p></li>`).join("");
+    if(s.email){ $$("[data-bind-email]").forEach(a => { a.textContent = s.email; a.href = "mailto:" + s.email; }); }
+  });
+
+  /* Services + price list, also fills the form dropdowns */
+  load("/content/services.json").then(d => {
+    const items = (d && d.items) || [];
+    $("#service-list").innerHTML = items.map(i => `
+      <li><h3>${esc(i.name)}</h3><p>${esc(i.description)}</p><span class="price">${esc(i.price)}</span></li>`).join("")
+      || `<li><p>Our service list is being updated. Send a quote request and tell us what you need.</p></li>`;
+    $$("[data-services]").forEach(sel => {
+      sel.insertAdjacentHTML("beforeend", items.map(i => `<option>${esc(i.name)}</option>`).join("") + `<option>Something else</option>`);
+    });
+  });
+
+  /* Gallery */
+  load("/content/gallery.json").then(d => {
+    const items = ((d && d.items) || []).filter(i => i.image);
+    const g = $("#gallery");
+    if(!items.length){ g.outerHTML = `<p class="empty">New photos are on the way. In the meantime, request a quote and we’ll share examples of similar jobs.</p>`; return; }
+    g.innerHTML = items.map((i, n) => `
+      <figure style="margin:0">
+        <button type="button" data-src="${esc(i.image)}" data-cap="${esc(i.caption)}" aria-label="View larger: ${esc(i.caption || "project photo")}" style="width:100%;height:100%">
+          <img src="${esc(i.image)}" alt="${esc(i.caption || "Landscaping project")}" loading="lazy">
+          ${i.caption ? `<figcaption>${esc(i.caption)}</figcaption>` : ""}
+        </button>
+      </figure>`).join("");
+  });
+
+  const lb = $("#lightbox");
+  document.addEventListener("click", e => {
+    const b = e.target.closest(".gallery button"); if(!b) return;
+    $("#lightbox-img").src = b.dataset.src; $("#lightbox-img").alt = b.dataset.cap || "Project photo";
+    $("#lightbox-cap").textContent = b.dataset.cap || "";
+    lb.showModal();
+  });
+  $("#lightbox-close").onclick = () => lb.close();
+  lb.addEventListener("click", e => { if(e.target === lb) lb.close(); });
+
+  /* Tabs */
+  function showTab(name){
+    ["quote","booking"].forEach(t => {
+      $("#tab-"+t).setAttribute("aria-selected", t===name);
+      $("#pane-"+t).hidden = t!==name;
+    });
+  }
+  $$('[role="tab"]').forEach(b => b.addEventListener("click", () => showTab(b.id.replace("tab-",""))));
+  $$("[data-open-tab]").forEach(a => a.addEventListener("click", () => showTab(a.dataset.openTab)));
+
+  /* Earliest booking date = tomorrow */
+  const t = new Date(); t.setDate(t.getDate()+1);
+  $$("[data-min-tomorrow]").forEach(i => i.min = t.toISOString().slice(0,10));
+
+  /* Submit forms to Netlify without leaving the page */
+  $$("form[data-netlify]").forEach(form => {
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const label = btn.textContent;
+      btn.disabled = true; btn.textContent = "Sending…";
+      form.querySelector(".error-msg")?.remove();
+      try {
+        const res = await fetch("/", { method:"POST", headers:{"Content-Type":"application/x-www-form-urlencoded"},
+          body: new URLSearchParams(new FormData(form)).toString() });
+        if(!res.ok) throw new Error(res.status);
+        const isQuote = form.name === "quote";
+        form.outerHTML = `<div class="success" role="status">
+          <h3>${isQuote ? "Proposal request sent" : "Site walk request sent"}</h3>
+          <p>Thanks! We’ve got your details and will be in touch within one business day${isQuote ? " to set up a walkthrough of your community" : " to confirm the time"}.</p></div>`;
+      } catch(err){
+        btn.disabled = false; btn.textContent = label;
+        btn.insertAdjacentHTML("afterend", `<p class="error-msg" role="alert">Your request didn’t go through. Check your connection and try again, or call us directly.</p>`);
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

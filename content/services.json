@@ -1,0 +1,10 @@
+{
+  "items": [
+    { "name": "Common area maintenance", "description": "Mowing, edging, trimming, and blowing for all shared turf, on a weekly or biweekly schedule.", "price": "Monthly contract" },
+    { "name": "Entrance & monument care", "description": "Seasonal color, shrub shaping, and clean-ups that keep your front entrance sharp.", "price": "Monthly contract" },
+    { "name": "Irrigation management", "description": "Monthly inspections, repairs, timer adjustments, and water-use reporting.", "price": "From $150 per month" },
+    { "name": "Tree & palm care", "description": "Pruning, palm trimming, storm clean-up, and removal of hazardous trees.", "price": "Custom proposal" },
+    { "name": "Retention pond banks", "description": "Bank mowing, debris removal, and erosion control around ponds and drainage areas.", "price": "Custom proposal" },
+    { "name": "Mulch & enhancements", "description": "Annual mulch refresh, new plantings, and upgrades to tired common areas.", "price": "Custom proposal" }
+  ]
+}

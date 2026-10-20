@@ -1,0 +1,66 @@
+# ---------------------------------------------------------------
+#  ONE-TIME SETUP: replace the line below with your GitHub details
+#  Example:  repo: janesmith/royal-breeze-website
+# ---------------------------------------------------------------
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/YOUR-REPO-NAME
+  branch: main
+
+media_folder: images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: website
+    label: Website content
+    editor:
+      preview: false
+    files:
+      - name: services
+        label: Services & prices
+        file: content/services.json
+        fields:
+          - name: items
+            label: Services
+            label_singular: Service
+            widget: list
+            summary: "{{fields.name}} ({{fields.price}})"
+            fields:
+              - { name: name, label: Service name, widget: string }
+              - { name: description, label: Short description, widget: text }
+              - { name: price, label: "Price (e.g. Monthly contract, or From $150 per month)", widget: string }
+
+      - name: gallery
+        label: Photo gallery
+        file: content/gallery.json
+        fields:
+          - name: items
+            label: Photos
+            label_singular: Photo
+            widget: list
+            summary: "{{fields.caption}}"
+            hint: "Drag photos to reorder them. Photos taken sideways (landscape) look best."
+            fields:
+              - { name: image, label: Photo, widget: image }
+              - { name: caption, label: Caption, widget: string, required: false }
+
+      - name: settings
+        label: Business info
+        file: content/settings.json
+        fields:
+          - { name: business_name, label: Business name, widget: string }
+          - { name: headline, label: Big headline at the top, widget: string }
+          - { name: intro, label: Intro sentence under the headline, widget: text }
+          - { name: service_area, label: Service area, widget: string }
+          - { name: phone, label: Phone, widget: string }
+          - { name: email, label: Email, widget: string }
+          - { name: hours, label: Business hours, widget: string }
+          - { name: about, label: About you (shown next to the forms), widget: text }
+          - name: highlights
+            label: Why communities choose you
+            label_singular: Point
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: Short title, widget: string }
+              - { name: text, label: One sentence, widget: string }
