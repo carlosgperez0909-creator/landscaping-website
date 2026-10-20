@@ -4,7 +4,7 @@
 # ---------------------------------------------------------------
 backend:
   name: github
-  repo: YOUR-GITHUB-USERNAME/YOUR-REPO-NAME
+  repo: carlosgperez0909-creator/landscaping-website
   branch: main
 
 media_folder: images/uploads
