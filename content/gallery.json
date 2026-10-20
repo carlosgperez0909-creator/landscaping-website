@@ -1,8 +1,20 @@
 {
   "items": [
-    { "image": "/images/uploads/sample-lawn.svg", "caption": "Common area mowing" },
-    { "image": "/images/uploads/sample-patio.svg", "caption": "Clubhouse walkway" },
-    { "image": "/images/uploads/sample-beds.svg", "caption": "Entrance seasonal color" },
-    { "image": "/images/uploads/sample-hedge.svg", "caption": "Perimeter hedge shaping" }
+    {
+      "image": "https://picsum.photos/id/18/1920/1280.webp",
+      "caption": "Common area mowing"
+    },
+    {
+      "image": "https://picsum.photos/id/502/1920/1280.webp",
+      "caption": "Clubhouse walkway"
+    },
+    {
+      "image": "https://picsum.photos/id/169/1920/1280.webp",
+      "caption": "Entrance seasonal color"
+    },
+    {
+      "image": "https://picsum.photos/id/492/1920/1280.webp",
+      "caption": "Perimeter hedge shaping"
+    }
   ]
 }
